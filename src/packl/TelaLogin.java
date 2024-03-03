@@ -1,20 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package packl;
 
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author gussa
- */
+
 public class TelaLogin extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaLogin
-     */
+  
     public TelaLogin() {
         initComponents();
     }
@@ -126,7 +118,7 @@ public class TelaLogin extends javax.swing.JFrame {
             //login-> adm
             //senha-> 1234
 
-            if (login.equalsIgnoreCase("adm") && senha.equalsIgnoreCase("1234")) {
+            if (login.equalsIgnoreCase("1234") && senha.equalsIgnoreCase("1234")) {
                 dispose();
                 new TelaInicio().setVisible(true);
             } else {

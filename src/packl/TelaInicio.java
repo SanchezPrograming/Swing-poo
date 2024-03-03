@@ -4,15 +4,18 @@
  */
 package packl;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author gussa
  */
 public class TelaInicio extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaInicio
-     */
+    private List<Carro> listarCarros = new ArrayList<>();
+
     public TelaInicio() {
         initComponents();
     }
@@ -49,6 +52,11 @@ public class TelaInicio extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("Listar Carros");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packl/img/detran.png"))); // NOI18N
 
@@ -95,8 +103,27 @@ public class TelaInicio extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         dispose();
         new FormCarro().setVisible(true);
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        listarCarros();
+    }//GEN-LAST:event_jButton2ActionPerformed
+    private void listarCarros() {
+        FormCarro formCarro = new FormCarro();
+        List<Carro> carros = formCarro.getListaCarros();
+
+        StringBuilder listaCarrosTexto = new StringBuilder();
+        for (Carro carro : carros) {
+            listaCarrosTexto.append("Marca: ").append(carro.getMarca())
+                    .append(", Modelo: ").append(carro.getModelo())
+                    .append(", Ano: ").append(carro.getAno())
+                    .append(", Possui som: ").append(carro.isSom() ? "Sim" : "Não")
+                    .append("\n");
+        }
+
+        JOptionPane.showMessageDialog(this, listaCarrosTexto.toString());
+    }
 
     /**
      * @param args the command line arguments
